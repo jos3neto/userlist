@@ -3,7 +3,7 @@ from pwd import getpwall
 def fetch_users():
 	users = []
 	for user in getpwall():
-		if user.pw_uid >= 1000 and 'home' in user.pwd_home:
+		if user.pw_uid >= 1000 and 'home' in user.pw_dir:
 			users.append(
 			{
               'name': user.pw_name,
