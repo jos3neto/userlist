@@ -5,7 +5,7 @@ import sys
 def init_parser():
 	parser = ArgumentParser()
 	parser.add_argument('--path', help='the path to the export file')
-	parser.add_argument('--format', default='json', choices=['json', 'csv'], type=str.lower)
+	parser.add_argument('--format', help= 'Choose json or csv. Default is json.', default='json', choices=['json', 'csv'], type=str.lower)
 	return parser
 
 def main():
@@ -13,7 +13,7 @@ def main():
 	users = engine.fetch_users()
 	
 	if args.path:
-		file = open(args.path,'w',newline='')
+		file = open(args.path,'a',newline='')
 	else:
 		file = sys.stdout
 
