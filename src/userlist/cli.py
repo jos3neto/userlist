@@ -1,4 +1,6 @@
 from argparse import ArgumentParser
+from userlist import engine, export
+import sys
 
 def init_parser():
 	parser = ArgumentParser()
@@ -6,3 +8,19 @@ def init_parser():
 	parser.add_argument('--format', default='json', choices=['json', 'csv'], type=str.lower)
 	return parser
 
+def main():
+	args = init_parser().parse_args()
+	users = engine.fetch_users()
+	
+	if args.path:
+		file = open(args.path,'w',newline='')
+	else:
+		file = sys.stdout
+
+	if args.format == 'json':
+		export.to_json_file(users,file)
+	else:
+		export.to_csv_file(users,file)
+	
+
+	

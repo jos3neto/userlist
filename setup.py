@@ -13,6 +13,9 @@ setup(
     author_email='jose.neto@gmx.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    install_requires=[]
+    install_requires=[],
+	entry_points={
+        'console_scripts': 'userlist=userlist.cli:main'
+    }
 )
 	
